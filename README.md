@@ -24,6 +24,7 @@ Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-esp
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | `recreate_data/`                | Input scripts for QE                                                                                                          |
 | `cubes/`                | .cube files for the local density of states                                                                                                          |
+| `training_data/`                | Additional, reduced training data to train networks on Beryllium. Slighly larger then the reduced Al data, so debugging might be slower, but the LDOS are complete and can be integrated correctly.                                                                                                          |
 | `Be.pbe-n-rrkjus_psl.1.0.0.UPF` | Pseudopotential used for the QE calculation                                                                                   |
 | `Be.pw.scf.out`                 | Output file of QE. calculation                                                                                                 |
 | `Be_dens.npy`                   | Electronic density numpy array.                                                                                               |
