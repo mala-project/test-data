@@ -1,10 +1,12 @@
 # Test data for MALA
 
 This repository contains data to test, develop and debug [MALA](https://github.com/mala-project/mala) and MALA based runscripts.
+If you plan to do machine-learning tests ("Does this network implementation work? Is this new data loading strategy working?"), you can use either Al36 or Be2 data. If you plan to actually calculate physical quantities (total energy, band energy, forces, etc.), please use Be2, since only for Be2 a full simulation cell is captured (see below). The Al36 data is smaller (x4), making it better suited for small tests. 
 
 ## `Al36/`
 
-Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for an aluminium cell with 36 atoms, along with input scripts and pseudopotential to replicate this calculation. In detail, the following data files can be found:
+Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for an aluminium cell with 36 atoms, along with input scripts and pseudopotential to replicate this calculation. Please note that the LDOS and SNAP descriptors for this exampke DO NOT cover the full simulation cell. To provide a minimal data for debugging, each .in/out.npy contains 2000 data points carved from a cell containing ~1 million points. Therefore no meaningful physical results can be taken from this data. 
+In detail, the following data files can be found:
 
 | File Name                       | Description                                                                                                                   |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
