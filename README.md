@@ -5,7 +5,8 @@ If you plan to do machine-learning tests ("Does this network implementation work
 
 ## `Al36/`
 
-Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for an aluminium cell with 36 atoms, along with input scripts and pseudopotential to replicate this calculation. Please note that the LDOS and SNAP descriptors for this exampke DO NOT cover the full simulation cell. To provide a minimal data for debugging, each .in/out.npy contains 2000 data points carved from a cell containing ~1 million points. Therefore no meaningful physical results can be taken from this data. 
+Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for an aluminium cell with 36 atoms, along with input scripts and pseudopotential to replicate this calculation. Please note that the LDOS and SNAP descriptors for this exampke DO NOT cover the full simulation cell. To provide a minimal data for debugging, each .in/out.npy contains 2000 data points carved from a cell containing ~1 million points. Therefore no meaningful physical results can be taken from this data. The 200x10x1 chunks of data were carved out one after another from the 108x108x100 full cell, starting at position (0,0,0), leading to 5 reduced "snapshots" (number 0 to 4). 
+The energy grid for the LDOS is 250 entries long, starting at -10 eV with a spacing of 0.1 eV. 
 In detail, the following data files can be found:
 
 | File Name                       | Description                                                                                                                   |
@@ -20,7 +21,7 @@ In detail, the following data files can be found:
 
 ## `Be2`
 
-Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for a beryllium cell with 2 atoms, along with input scripts and pseudopotential to replicate this calculation. In comparison to Al36, which is larger in size and allows for more physically correct tests, this is a very minimal example. LDOS files are usually large, therefore this reduced example samples the LDOS somewhat inaccurately, in order to reduce storage size. In detail, the following data files can be found:
+Contains DFT calculation output from a [QuantumEspresso](https://www.quantum-espresso.org/) calculation for a beryllium cell with 2 atoms, along with input scripts and pseudopotential to replicate this calculation. In comparison to Al36, which is larger in size and allows for more physically correct tests, this is a very minimal example. LDOS files are usually large, therefore this reduced example samples the LDOS somewhat inaccurately, in order to reduce storage size. The energy grid for the LDOS is 11 entries long, starting at -5 eV with a spacing of 2.5 eV. In detail, the following data files can be found:
 
 | File Name                       | Description                                                                                                                   |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
