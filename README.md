@@ -34,7 +34,23 @@ following data files can be found:
 | `Al_dens.npy`                   | Electronic density numpy array.                                                                                               |
 | `Al_dos.npy`                    | Density of states numpy array.                                                                                                |
 
+The `.npy` arrays have the following shapes:
 
+```py
+>>> np.load('Al36/Al_dens.npy').shape
+(108, 108, 100)
+>>> np.load('Al36/Al_dos.npy').shape
+(250,)
+>>> np.load('Al36/Al_dens.npy').shape
+(108, 108, 100)
+>>> np.load('Al36/Al_debug_2k_nr0.in.npy').shape
+(100, 20, 1, 94)
+>>> np.load('Al36/Al_debug_2k_nr0.out.npy').shape
+(100, 20, 1, 250)
+```
+
+with SNAP descriptor (length 94) grids in each `Al_debug_2k_nr[0-4]*` file of
+100 x 20 x 1 (1-dimensional slices).
 
 ## `Be2`
 
@@ -59,6 +75,22 @@ the following data files can be found:
 | `Be_dos.npy`                    | Density of states numpy array.                                                                                                |
 | `Be_ldos.npy`                   | Local density of states numpy array.                                                                                          |
 
+The `.npy` arrays have the following shapes:
+
+```py
+>>> np.load('Be2/Be_dos.npy').shape
+(11,)
+>>> np.load('Be2/Be_ldos.npy').shape
+(18, 18, 27, 11)
+>>> np.load('Be2/Be_dens.npy').shape
+(18, 18, 27)
+>>> np.load('Be2/training_data/Be_snapshot1.in.npy').shape
+(18, 18, 27, 94)
+>>> np.load('Be2/training_data/Be_snapshot1.out.npy').shape
+(18, 18, 27, 11)
+```
+
+with a SNAP descriptor (length 94) grid of `18 x 18 x 27`.
 
 ## `workflow_test/`
 
