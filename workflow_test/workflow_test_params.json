@@ -5,11 +5,6 @@
     "use_horovod": false,
     "use_mpi": false,
     "data": {
-        "data_splitting_snapshots": [
-            "tr",
-            "va",
-            "te"
-        ],
         "data_splitting_type": "by_snapshot",
         "descriptors_contain_xyz": true,
         "input_rescaling_type": "feature-wise-standard",
@@ -24,7 +19,8 @@
                     "input_units": "None",
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr0.out.npy",
-                    "output_units": "1/Ry"
+                    "output_units": "1/Ry",
+					"snapshot_function": "tr"
                 }
             },
             {
@@ -36,7 +32,8 @@
                     "input_units": "None",
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr1.out.npy",
-                    "output_units": "1/Ry"
+                    "output_units": "1/Ry",
+					"snapshot_function": "va"
                 }
             },
             {
@@ -48,7 +45,8 @@
                     "input_units": "None",
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr2.out.npy",
-                    "output_units": "1/Ry"
+                    "output_units": "1/Ry",
+					"snapshot_function": "te"
                 }
             }
         ],
