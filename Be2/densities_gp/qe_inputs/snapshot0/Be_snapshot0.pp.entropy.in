@@ -1,0 +1,10 @@
+&inputpp
+ outdir='temp',
+ prefix='Be',
+ plot_num=4,
+/
+&plot
+ iflag=3,
+ output_format=6,
+ fileout='Be_snapshot0_entropy.cube',
+/
