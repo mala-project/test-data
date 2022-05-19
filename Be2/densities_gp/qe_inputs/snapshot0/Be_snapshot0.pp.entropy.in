@@ -2,6 +2,10 @@
  outdir='temp',
  prefix='Be',
  plot_num=4,
+ emin=-5.0,
+ emax=20.0,
+ delta_e=5.0,
+ degauss_ldos=0.5,
 /
 &plot
  iflag=3,
