@@ -1,5 +1,6 @@
 # Test data for MALA
 
+
 This repository contains data to test, develop and debug
 [MALA](https://github.com/mala-project/mala) and MALA based runscripts. If you
 plan to do machine-learning tests ("Does this network implementation work? Is
@@ -9,13 +10,28 @@ energy, forces, etc.), please use Be2, since only for Be2 a full simulation
 cell is captured (see below). The Al36 data is smaller (x4), making it better
 suited for small tests.
 
+## Array shapes
+
+For all arrays with dimension > 1, such as SNAP descriptor arrays like
+
+```py
+>>> np.load('Al36/Al_debug_2k_nr0.in.npy').shape
+(100, 20, 1, 94)
+```
+
+the first 3 dimensions represent a grid within the (super)cell. In the last
+dimension of length 94, the first 3 entries are the grid coordinates / indices
+(an artifact of the SNAP vector generation). **The actual features
+are `snap_array[..., 3:]`**.
+
+
 ## `Al36/`
 
 Contains DFT calculation output from a
 [QuantumEspresso](https://www.quantum-espresso.org/) calculation for an
 aluminium cell with 36 atoms, along with input scripts and pseudopotential to
 replicate this calculation. Please note that the LDOS and SNAP descriptors for
-this exampke DO NOT cover the full simulation cell. To provide a minimal data
+this example DO NOT cover the full simulation cell. To provide a minimal data
 for debugging, each .in/out.npy contains 2000 data points carved from a cell
 containing ~1 million points. Therefore no meaningful physical results can be
 taken from this data. The 200x10x1 chunks of data were carved out one after
@@ -37,8 +53,6 @@ following data files can be found:
 The `.npy` arrays have the following shapes:
 
 ```py
->>> np.load('Al36/Al_dens.npy').shape
-(108, 108, 100)
 >>> np.load('Al36/Al_dos.npy').shape
 (250,)
 >>> np.load('Al36/Al_dens.npy').shape
@@ -68,7 +82,7 @@ the following data files can be found:
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | `recreate_data/`                | Input scripts for QE                                                                                                          |
 | `cubes/`                        | .cube files for the local density of states                                                                                   |
-| `training_data/`                | Additional, reduced training data to train networks on Beryllium. Slighly larger then the reduced Al data, so debugging might be slower, but the LDOS are complete and can be integrated correctly.|
+| `training_data/`                | Additional, reduced training data to train networks on Beryllium. Slightly larger then the reduced Al data, so debugging might be slower, but the LDOS are complete and can be integrated correctly.|
 | `Be.pbe-n-rrkjus_psl.1.0.0.UPF` | Pseudopotential used for the QE calculation                                                                                   |
 | `Be.pw.scf.out`                 | Output file of QE. calculation                                                                                                |
 | `Be_dens.npy`                   | Electronic density numpy array.                                                                                               |
@@ -91,6 +105,24 @@ The `.npy` arrays have the following shapes:
 ```
 
 with a SNAP descriptor (length 94) grid of `18 x 18 x 27`.
+
+### Density data for GP tests
+
+Reduced inputs with 2 features (5 - 3).
+
+```py
+>>> np.load("Be2/densities_gp/inputs_snap/snapshot0.in.npy").shape
+(18, 18, 27, 5)
+```
+
+The density arrays have an extra 4th dimension of length 1, compared to
+`Be2/Be_dens.npy`.
+
+```py
+>>> np.load("Be2/densities_gp/outputs_density/snapshot0.out.npy").shape
+(18, 18, 27, 1)
+```
+
 
 ## `workflow_test/`
 
