@@ -20,7 +20,8 @@
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr0.out.npy",
                     "output_units": "1/Ry",
-					"snapshot_function": "tr"
+                    "snapshot_function": "tr",
+                    "snapshot_type": "numpy"
                 }
             },
             {
@@ -33,7 +34,8 @@
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr1.out.npy",
                     "output_units": "1/Ry",
-					"snapshot_function": "va"
+                    "snapshot_function": "va",
+                    "snapshot_type": "numpy"
                 }
             },
             {
@@ -46,16 +48,13 @@
                     "output_npy_directory": "/home/fiedlerl/data/mala_data_repo/Al36",
                     "output_npy_file": "Al_debug_2k_nr2.out.npy",
                     "output_units": "1/Ry",
-					"snapshot_function": "te"
+                    "snapshot_function": "te",
+                    "snapshot_type": "numpy"
                 }
             }
         ],
         "use_lazy_loading": false,
         "_parameters_type": "ParametersData"
-    },
-    "debug": {
-        "grid_dimensions": [],
-        "_parameters_type": "ParametersDebug"
     },
     "descriptors": {
         "descriptor_type": "SNAP",
