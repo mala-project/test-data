@@ -108,12 +108,23 @@ with a SNAP descriptor (length 94) grid of `18 x 18 x 27`.
 
 ### Density data for GP tests
 
-Reduced inputs with 2 features (5 - 3).
+Reduced inputs with 2 features (5 minus first 3 lammps grid index)
 
 ```py
 >>> np.load("Be2/densities_gp/inputs_snap/snapshot0.in.npy").shape
 (18, 18, 27, 5)
 ```
+
+Inputs with "optimized" set of SNAP features (55)
+
+```py
+>>> np.load("Be2/densities_gp/inputs_snap/optimized_snapshot0.in.npy").shape
+(18, 18, 27, 58)
+```
+
+We can also use the non-reduced normal 91 feature SNAPs from
+`Be2/training_data/Be_snapshot*.in.npy`, where numbers map to each other, e.g.
+`Be2/training_data/Be_snapshot1.in.npy` -- `Be2/densities_gp/outputs_density/snapshot1.out.npy`.
 
 The density arrays have an extra 4th dimension of length 1, compared to
 `Be2/Be_dens.npy`.
