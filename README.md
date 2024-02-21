@@ -51,7 +51,7 @@ LDOS (11 points) on `18 x 18 x 27` real space grid.
 (18, 18, 27, 11)
 ```
 
-Density of states (only provideed for snapshot 0):
+Density of states (only provided for snapshot 0):
 
 ```py
 >>> np.load('Be2/Be_snapshot0.dos.npy').shape
@@ -68,9 +68,9 @@ can be ignored, i.e. use `d=np.load(...); d[..., -1]` to squeeze the shape to
 ```
 
 
-### OpenPMD-based files
+### openPMD-based files
 
-MALA [supports the OpenPMD
+MALA [supports the openPMD
 format](https://mala-project.github.io/mala/advanced_usage/openpmd.html), so we
 also provide data in that format here.
 
@@ -88,11 +88,48 @@ $ h5ls -r Be_snapshot0.out.h5 | grep Dataset | sort -V
 /data/0/meshes/LDOS/10    Dataset {18, 18, 27}
 ```
 
-For the density, the snapshot number 0 is encoded in the dataset name.
+For the density, the snapshot number 0 is encoded in the name
+`/data/0`.
 
 ```sh
 $ h5ls -r Be_snapshot.dens.h5 | grep Dataset
 /data/0/meshes/Density/0 Dataset {18, 18, 27}
+```
+
+To understand the naming scheme, we can use openPMD's introspection tool:
+
+```
+$ openpmd-ls Be_snapshot.dens.h5
+openPMD series: Be_snapshot.dens
+openPMD standard: 1.1.0
+openPMD extensions: 0
+
+data author: ...
+data created: 2023-05-23 15:37:18 +0200
+data backend: HDF5
+generating machine: unknown
+generating software: MALA (version: 1.1.0)
+generating software dependencies: unknown
+
+number of iterations: 1 (groupBased)
+  all iterations: 0
+
+number of meshes: 1
+  all meshes:
+    Density
+
+number of particle species: 0
+```
+
+So `/data/0/` is the openPMD iteration counter, which we use to name snapshots.
+`Density/0` is one grid / array / Dataset (in hdf terms) / mesh (in openPMD
+terms) of shape `18 x 18 x 27`. Multiple snapshots in one file would be called
+
+```
+/data/0/meshes/Density/0     Dataset {18, 18, 27}
+/data/1/meshes/Density/0     Dataset {18, 18, 27}
+/data/2/meshes/Density/0     Dataset {18, 18, 27}
+...
 ```
 
 
