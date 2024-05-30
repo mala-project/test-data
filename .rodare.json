@@ -1,0 +1,30 @@
+{
+  "creators": [
+    {
+      "name": "Fiedler, Lenz",
+      "affiliation": "Helmholtz-Zentrum Dresden-Rossendorf",
+      "orcid": "0000-0002-8311-0613"
+    },
+    {
+      "name": "Cangi, Attila",
+      "affiliation": "Helmholtz-Zentrum Dresden-Rossendorf",
+      "orcid": "0000-0001-9162-262X"
+    },
+    {
+      "name": "Brzoza, Bartosz",
+      "affiliation": "Helmholtz-Zentrum Dresden-Rossendorf",
+      "orcid": "0009-0007-3618-0428"
+    },
+    {
+      "name": "Kotik, Daniel",
+      "affiliation": "Helmholtz-Zentrum Dresden-Rossendorf",
+      "orcid": "0000-0001-8735-3199"
+    }
+  ],
+  "title": "Test data for MALA",
+  "access_right": "open",
+  "upload_type": "data",
+  "license": "BSD-3-Clause license",
+  "pub_id": "39162",
+  "description": "This repository contains data to test, develop and debug MALA and MALA based runscripts. If you plan to do machine-learning tests (\"Does this network implementation work? Is this new data loading strategy working?\"), this is the right data to test with. It is NOT production level data!"
+}
