@@ -30,6 +30,7 @@ File Name                       | Description
 `Be_snapshot0-3.out.npy`        | Local density of states numpy array
 `Be_snapshot0-3.in.h5`          | Bispectrum descriptors (HDF5 format)
 `Be_snapshot0-3.out.h5`         | Local density of states (HDF5 format)
+`Be_model.zip`                  | MALA trained model archive for examples and tests
 
 ### `numpy` format files
 
