@@ -24,7 +24,7 @@
   "title": "Test data for MALA",
   "access_right": "open",
   "upload_type": "software",
-  "license": "BSD-3-Clause license",
+  "license": "BSD-3-Clause",
   "pub_id": "39162",
   "description": "This repository contains data to test, develop and debug MALA and MALA based runscripts. If you plan to do machine-learning tests (\"Does this network implementation work? Is this new data loading strategy working?\"), this is the right data to test with. It is NOT production level data!"
 }
