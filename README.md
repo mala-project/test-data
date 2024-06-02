@@ -1,5 +1,8 @@
 # Test data for MALA
 
+> IMPORTANT: If you create a new version of this repository, please remember to update the link
+> to it in the MALA CPU test workflow! 
+
 This repository contains data to test, develop and debug
 [MALA](https://github.com/mala-project/mala) and MALA based runscripts. If you
 plan to do machine-learning tests ("Does this network implementation work? Is
