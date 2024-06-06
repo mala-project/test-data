@@ -34,6 +34,7 @@ File Name                       | Description
 `Be_snapshot0-3.out.npy`        | Local density of states numpy array
 `Be_snapshot0-3.in.h5`          | Bispectrum descriptors (HDF5 format)
 `Be_snapshot0-3.out.h5`         | Local density of states (HDF5 format)
+`Be_model.zip`                  | MALA trained model archive for examples and tests
 
 ### `numpy` format files
 
@@ -135,10 +136,3 @@ terms) of shape `18 x 18 x 27`. Multiple snapshots in one file would be called
 /data/2/meshes/Density/0     Dataset {18, 18, 27}
 ...
 ```
-
-
-## `workflow_test/`
-
-Contains the saved parameters, network and input/output scaler for a run of
-MALA example 01. With these the correct loading of a checkpoint in MALA can be
-confirmed, i.e. the workflow can be checked.
