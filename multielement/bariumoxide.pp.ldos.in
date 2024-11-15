@@ -1,0 +1,15 @@
+&inputpp
+ outdir='temp',
+ prefix='bariumoxide',
+ plot_num=3,
+ emin=-19,
+ emax=13,
+ delta_e=0.1,
+ degauss_ldos=0.2,
+ use_gauss_ldos=.true.
+/
+&plot
+ iflag=3,
+ output_format=6,
+ fileout='bariumoxide_ldos.cube',
+/
