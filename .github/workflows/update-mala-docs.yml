@@ -1,0 +1,45 @@
+name: Update MALA Documentation
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+jobs:
+  update-mala-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '1'
+
+      - name: Make the change and create a pull request
+        run: |
+          git clone https://github.com/mala-project/mala.git
+          cd mala
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git remote set-url origin https://${{ secrets.MALA_PAT }}@github.com/mala-project/mala.git
+
+          BRANCH_NAME="update-test-data-version-${{ github.event.release.tag_name }}"
+          git checkout -b $BRANCH_NAME
+
+          sed -i 's/git checkout \b[0-9]\{1,3\}.\b[0-9]\{1,3\}.\b[0-9]\{1,3\}/git checkout ${{ github.event.release.tag_name }}/' docs/source/install/installing_mala.rst
+          git add docs/source/install/installing_mala.rst
+
+          git commit -m "Update 'test-data' release version to ${{ github.event.release.tag_name }}"
+          git push --set-upstream origin $BRANCH_NAME
+
+          # Authorize GitHub CLI for the current repository and
+          # create a pull-requests containing the updates.
+          echo "${{ secrets.MALA_PAT }}" > token.txt
+          gh auth login --with-token < token.txt
+          gh pr create \
+            --title "Update 'test-data' release version to ${{ github.event.release.tag_name }}" \
+            --body "" \
+            --head "$BRANCH_NAME" \
+            --base "develop"
