@@ -1,9 +1,5 @@
 # Test data for MALA
 
-> IMPORTANT: If you create a new version of this repository, please remember to update the link
-> to it in the MALA CPU test workflow! Instructions on how to do this are provided in the respective
-> workflow yaml file cpu-tests.yml.
-
 This repository contains data to test, develop and debug
 [MALA](https://github.com/mala-project/mala) and MALA based runscripts. If you
 plan to do machine-learning tests ("Does this network implementation work? Is
@@ -43,7 +39,6 @@ SNAP bispectrum descriptors of length 91 on `18 x 18 x 27` real space grid.
 > [!NOTE]
 > In the last dimension of length 94, the first 3 entries are the grid coordinates / indices (an artifact of the SNAP vector generation). **The actual features are `snap_array[..., 3:]`**.
 
-
 ```py
 >>> np.load('Be2/Be_snapshot1.in.npy').shape
 (18, 18, 27, 94)
@@ -71,7 +66,6 @@ can be ignored, i.e. use `d=np.load(...); d[..., -1]` to squeeze the shape to
 >>> np.load('Be2/Be_snapshot0.dens.npy').shape
 (18, 18, 27, 1)
 ```
-
 
 ### openPMD-based files
 
@@ -103,7 +97,7 @@ $ h5ls -r Be_snapshot.dens.h5 | grep Dataset
 
 To understand the naming scheme, we can use openPMD's introspection tool:
 
-```
+```sh
 $ openpmd-ls Be_snapshot.dens.h5
 openPMD series: Be_snapshot.dens
 openPMD standard: 1.1.0
@@ -130,7 +124,7 @@ So `/data/0/` is the openPMD iteration counter, which we use to name snapshots.
 `Density/0` is one grid / array / Dataset (in hdf terms) / mesh (in openPMD
 terms) of shape `18 x 18 x 27`. Multiple snapshots in one file would be called
 
-```
+```sh
 /data/0/meshes/Density/0     Dataset {18, 18, 27}
 /data/1/meshes/Density/0     Dataset {18, 18, 27}
 /data/2/meshes/Density/0     Dataset {18, 18, 27}
