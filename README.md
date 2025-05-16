@@ -163,7 +163,7 @@ Bispectrum descriptors of length 91 on `18 x 18 x 27` real space grid.
 (48, 48, 48, 33)
 ```
 
-LDOS (11 points) on `48 x 48 x 48` real space grid.
+LDOS (67 / 64 points) on `48 x 48 x 48` real space grid.
 
 > [!NOTE]
 > This is an LDOS split along the energy axis, meaning that upon loading within MALA, the values directly at the split are discarded. The energy axis is split in three places. Load with MALA to get the correct LDOS. **The actual features have dimensionality 64!`**.
