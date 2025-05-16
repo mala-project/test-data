@@ -1,0 +1,52 @@
+&CONTROL
+   calculation      = 'scf'
+   verbosity        = 'high'
+   restart_mode     = 'from_scratch'
+   outdir           = 'temp'
+   prefix           = 'BaO_snapshot0'
+   pseudo_dir       = '/home/fiedlerl/tools/pslibrary/pbe/PSEUDOPOTENTIALS/'
+/
+&SYSTEM
+   ibrav            = 0
+   nbnd             = 40
+   ecutwfc          = 50
+   ecutrho          = 200
+   nosym            = .true.
+   noinv            = .true.
+   occupations      = 'smearing'
+   degauss          = 0.0018874
+   smearing         = 'fermi-dirac'
+   ntyp             = 2
+   nat              = 8
+/
+&ELECTRONS
+   conv_thr         = 0.000144
+   mixing_mode      = 'plain'
+   mixing_beta      = 0.1
+/
+&IONS
+/
+&CELL
+/
+
+ATOMIC_SPECIES
+Ba 137.33 Ba_ncrs_v050_pbe.upf
+O 16.00 O_ncrs_v050_pbe.upf
+
+K_POINTS automatic
+4 4 4  0 0 0
+
+CELL_PARAMETERS angstrom
+5.5807834190363250    0.0000000000000000    0.0000000000000003
+0.0000000000000009    5.5807834190363250    0.0000000000000003
+0.0000000000000000    0.0000000000000000    5.5807834190363250
+
+ATOMIC_POSITIONS angstrom
+Ba  0.0000000000000000  0.0000000000000000  0.0000000000000000
+Ba  0.0000000000000005  2.9903917095181625  2.7903917095181625
+Ba  2.7903917095181625  0.0000000000000000  2.7903917095181625
+Ba  2.7903917095181630  2.7903917095181625  0.0000000000000003
+O  2.7903917095181625  0.0000000000000000  0.0000000000000001
+O  2.7903917095181630  2.7903917095181625  2.7903917095181630
+O  0.0000000000000000  0.0000000000000000  2.9903917095181625
+O  0.0000000000000005  2.7903917095181625  0.0000000000000001

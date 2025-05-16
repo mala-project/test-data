@@ -1,0 +1,15 @@
+&inputpp
+ outdir='temp',
+ prefix='BaO_snapshot0',
+ plot_num=3,
+ emin=-4.5,
+ emax=0.5,
+ delta_e=0.5,
+ degauss_ldos=1.0,
+ use_gauss_ldos=.true.
+/
+&plot
+ iflag=3,
+ output_format=6,
+ fileout='BaO_ldos_2.cube',
+/
