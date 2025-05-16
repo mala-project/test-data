@@ -34,7 +34,7 @@ File Name                       | Description
 
 ### `numpy` format files
 
-SNAP bispectrum descriptors of length 91 on `18 x 18 x 27` real space grid.
+Bispectrum descriptors of length 91 on `18 x 18 x 27` real space grid.
 
 > [!NOTE]
 > In the last dimension of length 94, the first 3 entries are the grid coordinates / indices (an artifact of the SNAP vector generation). **The actual features are `snap_array[..., 3:]`**.
@@ -129,4 +129,47 @@ terms) of shape `18 x 18 x 27`. Multiple snapshots in one file would be called
 /data/1/meshes/Density/0     Dataset {18, 18, 27}
 /data/2/meshes/Density/0     Dataset {18, 18, 27}
 ...
+```
+
+
+## `Ba4O4`
+
+Contains DFT calculation output from a
+[QuantumEspresso](https://www.quantum-espresso.org/) calculation for a
+barium oxide cell with 8 atoms, along with input scripts and pseudopotential to
+replicate this calculation. LDOS files are usually large, therefore this
+reduced example samples the LDOS somewhat inaccurately, in order to reduce
+storage size. The energy grid for the LDOS is 67 entries long, split along the energy
+axis at multiple points and sampled with a spacing of 0.5 eV. Only one snapshot is contained 
+in the numpy format, all training and OpenPMD testing can be done with the beryllium data set. 
+In detail, the following data files can be found:
+
+File Name                       | Description
+-|-
+`recreate_data/`                | Input scripts for QE
+`cubes/`                        | `.cube` files for the local density of states
+`Ba_ncrs_v050_pbe.upf` / `O_ncrs_v050_pbe.upf` | Pseudopotentials used for the QE calculation
+`BaO_snapshot0.out`            | Output file of QE. calculation
+`BaO_snapshot0.in.npy`         | Bispectrum descriptors numpy array
+`BaO_snapshot0.out.npy`        | Local density of states numpy array
+
+Bispectrum descriptors of length 91 on `18 x 18 x 27` real space grid.
+
+> [!NOTE]
+> In the last dimension of length 33, the first 3 entries are the grid coordinates / indices (an artifact of the SNAP vector generation). **The actual features are `snap_array[..., 3:]`**.
+
+```py
+>>> np.load('Be2/Be_snapshot1.in.npy').shape
+(48, 48, 48, 33)
+```
+
+LDOS (11 points) on `48 x 48 x 48` real space grid.
+
+> [!NOTE]
+> This is an LDOS split along the energy axis, meaning that upon loading within MALA, the values directly at the split are discarded. The energy axis is split in three places. Load with MALA to get the correct LDOS. **The actual features have dimensionality 64!`**.
+
+
+```py
+>>> np.load('Be2/Be_snapshot1.out.npy').shape
+(48, 48, 48, 67)
 ```
